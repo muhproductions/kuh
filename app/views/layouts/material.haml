@@ -6,7 +6,6 @@
     %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
     %meta{:content => "Muh - In memory gists. - Paste as a service", :name => "description"}/
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
-    /%link{:href => "http://fonts.googleapis.com/css?family=Roboto:300,400,500,700", :rel => "stylesheet", :type => "text/css"}/
     %title= yield :title
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
@@ -24,7 +23,7 @@
               Tescht
           .modal-footer
             %button.btn.btn-primary Login
-    %div.navbar.navbar-danger
+    %div.navbar.navbar-info
       .container
         %button.btn.btn-fab.btn-fab-mini.btn-default.pull-right.btn-raised
           %i.material-icons
