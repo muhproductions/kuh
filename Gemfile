@@ -8,7 +8,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 
-gem 'redis'
+gem 'typhoeus'
+
 gem 'pry-rails'
 gem 'haml-rails'
 gem 'puma'

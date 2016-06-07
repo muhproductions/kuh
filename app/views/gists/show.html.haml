@@ -1,13 +1,15 @@
 - content_for :script do
   = javascript_include_tag 'codemirror_base'
 %div.container
-  - @gist.snippets.to_enum.with_index.reverse_each do |s,i|
+  - @gist['snippets'].each_with_index do |(k,v),i|
     %div.jumbotron{style: 'padding: 0;'}
       %textarea.hero-spacer.z-depth-2{id: "gist-#{i}"}
         = preserve do
-          =s.paste
+          =v['paste']
       %span.label.label-danger.pull-left
-        = s.lang.capitalize
+        = v['lang'].capitalize
+      %a.label.label-danger.pull-right{href: "/snippets/#{k}"}
+        = k
     :javascript
-      this.viewer($("#gist-#{i}")[0], "#{s.lang}");
+      this.viewer($("#gist-#{i}")[0], "#{v['lang']}");
   %a.btn.btn-raised.btn-success.pull-right{href: '/gists/new'} New paste

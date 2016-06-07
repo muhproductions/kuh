@@ -12,18 +12,31 @@ class GistsController < ApplicationController
     snippets = params['gist']
     langs = params['lang']
 
-    gist = Gist.new
+    params = Array.new
+
     snippets.each_with_index do |s,i|
-      gist.snippets.create(Snippet.new(paste: s, lang: langs[i]))
+      params << {paste: s, lang: langs[i]}
     end
-    flash[:created] = {title: 'Successfully created gist.', id: gist.id}
-    redirect_to "/gists/#{gist.id}"
+
+    request = Typhoeus::Request.new(API+"/gists",
+                                    method: :post,
+                                    params: { snippets: params})
+
+    request.run
+
+    id = JSON.parse(request.response.body)['gist']['uuid']
+    time = request.response.total_time * 100
+    
+    flash[:created] = {title: "Successfully created gist in #{time.to_i}ms",
+                       id: id}
+    redirect_to "/gists/#{id}"
   end
 
   private
 
   def get_gist
-    @gist = Gist.find(params[:id])
+    response = Typhoeus.get("#{API}/gists/#{params[:id]}")
+    @gist = JSON.parse(response.response_body)
   end
 
 end
