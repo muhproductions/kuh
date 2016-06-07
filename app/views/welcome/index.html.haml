@@ -1,7 +1,10 @@
+= video_tag 'cow.webm', autobuffer: true, autoplay: true, loop: true, poster: image_url('cow.png')
 %div.container
-  %header.jumbotron.hero-spacer.z-depth-2
+  %header.jumbotron.hero-spacer.z-depth-2{style: 'opacity: 0.9;'}
     %h1 muhPaste - unleash the cows
     %p
       Save your shitty code even faster with muh and its in-memory paste service
-  %a.btn.btn-raised.btn-success.pull-right{href: '/gists/new'}
+  %a.btn.btn-raised.btn-danger.pull-right{href: '/gists/new'}
     Take my shit!
+%script
+  $('video')[0].playbackRate = 0.7;

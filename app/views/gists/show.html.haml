@@ -1,3 +1,5 @@
+- content_for :script do
+  = javascript_include_tag 'codemirror_base'
 %div.container
   - @gist.snippets.to_enum.with_index.reverse_each do |s,i|
     %div.jumbotron{style: 'padding: 0;'}
