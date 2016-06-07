@@ -77,32 +77,3 @@ function cloneOptions(from, to) {
 function isMobile() {
   return window.matchMedia("only screen and (max-width: 760px)").matches;
 }
-
-function createExpireSlider(div) {
-  var nonLinearSlider = document.getElementById(div)
-	noUiSlider.create(nonLinearSlider, {
-		behaviour: 'tap',
-		start: 1209600,
-		range: {
-			'min': [ 86400, 86400 ],
-			'30%': [ 604800, 604800 ],
-			'60%': [ 2419200, 2419200 ],
-			'max': [ 29030400 ]
-		}
-	});
-  var value = document.getElementById('test-value')
-  var form_val = document.getElementById('form-value')
-	nonLinearSlider.noUiSlider.on('update', function ( values, handle ) {
-		if ( !handle ) {
-      var val = parseInt(values[handle]) / 86400;
-      if (val >= 28) {
-			  value.value = (val/7/4) + ' month(s)';
-      } else if (val >= 7) {
-			  value.value = (val/7) + ' week(s)';
-      } else {
-			  value.value = val + ' day(s)';
-      }
-      form_val.value = values[handle];
-		}
-	});
-}

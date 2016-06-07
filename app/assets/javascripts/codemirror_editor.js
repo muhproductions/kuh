@@ -14,4 +14,3 @@
 //= require codemirror_search
 //= require codemirror_searchcursor
 //= require codemirror_vim
-//= require nouislider
