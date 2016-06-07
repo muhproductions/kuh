@@ -12,8 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
-//= require_tree ./codemirror
+//= require_tree ./main
 toastr.options = {
   "positionClass": "toast-bottom-left",
   "progressBar": true,
