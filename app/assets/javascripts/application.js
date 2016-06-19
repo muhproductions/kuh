@@ -11,14 +11,23 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require_tree ./main
+//= require codemirror_base
+//= require codemirror_editor
+//= require turbolinks
+//= require turboboost
 toastr.options = {
   "positionClass": "toast-bottom-left",
   "progressBar": true,
 }
 
-$(document).ready(function() {
+
+function ready() {
   $.material.init();
   setupSelect(); // comes from kuhstomize
-});
+}
+
+$(document).ready(ready);
+$(document).on('page:load', ready);

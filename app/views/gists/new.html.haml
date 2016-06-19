@@ -1,6 +1,3 @@
-- content_for :script do
-  = javascript_include_tag 'codemirror_base' 
-  = javascript_include_tag 'codemirror_editor' 
 %div.container
   %div.jumbotron
     %h2 Short on Vim knowledge?
@@ -10,7 +7,8 @@
       %a{href: 'https://vim.rtorr.com/'} this
       Vim Cheat Sheet to improve your knowledge.
       %small.text-muted.pull-right (You really should..)
-  = form_tag '/gists', method: :post do
+  = form_tag '/gists', method: :post, turboboost: true do
+    = hidden_field_tag :authenticity_token, form_authenticity_token
     %div#gists
       %div.jumbotron{style: 'padding: 0;'}
         %textarea.hero-spacer.z-depth-2#gist-0{name: 'gist[]', autofocus: true}
@@ -27,9 +25,8 @@
     %div.btn.btn-fab.btn-success.hide#add_snipp{onclick: 'addSnippet("gists")', style: 'margin-top: 7px; margin-right: 5px;'}
       %i.material-icons add
 :javascript
-  this.editor($('#gist-0')[0]);
-  toastr.warning('Please note that the application might be able to set your whole desk on fire',
-               'Highly Experimental',
-               {timeOut: 30000})
-  $('#add_snipp').removeClass('hide')
-
+  function init_editor() {
+    editor($('#gist-0')[0]);
+    $('#add_snipp').removeClass('hide')
+  }
+  init_editor();

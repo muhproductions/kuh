@@ -12,32 +12,33 @@
     = yield :script
     = favicon_link_tag
   %body
-    .modal.fade#login-modal{tabindex: '-1'}
-      .modal-dialog
-        .modal-content
-          .modal-header
-            %div.close{aria: {hidden: true}, data: {dismiss: :modal}, type: :button} &times;
-            %h4.modal-title Login
-          .model-body
-            %p
-              Tescht
-          .modal-footer
-            %button.btn.btn-primary Login
-    %div.navbar.navbar-info
-      .container
-        %button.btn.btn-fab.btn-fab-mini.btn-default.pull-right.btn-raised
-          %i.material-icons
-            face
-        .navbar-header
-          %a.navbar-brand.waves-effect.waves-light{href: '/'}
-            = image_tag 'logo.png', height: 32, width: 32, style: 'float: left; margin-right: 10px;'
-            muhPaste
-    - if flash[:success]
-      %div.container.alter.alert.dismissible.alert-success
-        %button.close{type: :button, data: { dismiss: :alert}} ×
-        = flash[:success]
-    - if flash[:created]
-      %div.container.alter.alert.alert-success
-        %h4= flash[:created]['title']
-        %strong= flash[:created]['id']
-    = yield
+    .content
+      .modal.fade#login-modal{tabindex: '-1'}
+        .modal-dialog
+          .modal-content
+            .modal-header
+              %div.close{aria: {hidden: true}, data: {dismiss: :modal}, type: :button} &times;
+              %h4.modal-title Login
+            .model-body
+              %p
+                Tescht
+            .modal-footer
+              %button.btn.btn-primary Login
+      %div.navbar.navbar-success
+        .container
+          %button.btn.btn-fab.btn-fab-mini.btn-default.pull-right.btn-raised
+            %i.material-icons
+              face
+          .navbar-header
+            %a.navbar-brand.waves-effect.waves-light{href: '/'}
+              = image_tag 'logo.png', height: 32, width: 32, style: 'float: left; margin-right: 10px;'
+              muhPaste
+      - if flash[:success]
+        %div.container.alter.alert.dismissible.alert-success
+          %button.close{type: :button, data: { dismiss: :alert}} ×
+          = flash[:success]
+      - if flash[:created]
+        %div.container.alter.alert.alert-success
+          %h4= flash[:created]['title']
+          %strong= flash[:created]['id']
+      = yield
