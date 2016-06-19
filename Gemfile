@@ -19,4 +19,4 @@ gem 'puma'
 
 gem 'bcrypt'
 gem 'codemirror-rails'
-
+gem 'clipboard-rails'
