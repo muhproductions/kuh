@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
+  get 'about' => 'about#index'
+
   post 'gists' => 'gists#create'
 
   get 'gists/new' => 'gists#new'
