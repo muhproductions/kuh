@@ -18,16 +18,59 @@
 //= require codemirror_editor
 //= require turbolinks
 //= require turboboost
+//= require clipboard
 toastr.options = {
   "positionClass": "toast-bottom-left",
   "progressBar": true,
 }
 
+$('.copy').tooltip({
+  trigger: 'click',
+  placement: 'left'
+});
+
+function setTooltip(btn, message) {
+  $(btn).tooltip('hide')
+    .attr('data-original-title', message)
+    .tooltip('show');
+}
+
+function hideTooltip(btn) {
+  setTimeout(function() {
+    $(btn).tooltip('hide');
+  }, 1000);
+}
 
 function ready() {
   $.material.init();
+  new Clipboard('.copy-codemirror', {
+    text: function(trigger) {
+      console.log(trigger);
+      return getCodeMirrorJQuery($(trigger).attr('target') + ' + .CodeMirror').getDoc().getValue();
+    }
+  });
   setupSelect(); // comes from kuhstomize
-}
+  var clipboard = new Clipboard('.copy');
 
+  clipboard.on('success', function(e) {
+    setTooltip(e.trigger, 'Copied!');
+    hideTooltip(e.trigger);
+  });
+}
+// Retrieve a CodeMirror Instance via jQuery.
+function getCodeMirrorJQuery(target) {
+  var $target = target instanceof jQuery ? target : $(target);
+  if ($target.length === 0) {
+    throw new Error('Element does not reference a CodeMirror instance.');
+  }
+
+  if (!$target.hasClass('CodeMirror')) {
+    if ($target.is('textarea')) {
+      $target = $target.next('.CodeMirror');
+    }
+  }
+
+  return $target.get(0).CodeMirror;
+};
 $(document).ready(ready);
 $(document).on('page:load', ready);

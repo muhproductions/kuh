@@ -4,10 +4,12 @@
       %textarea.hero-spacer.z-depth-2{id: "gist-#{i}"}
         = preserve do
           =v['paste']
-      %span.label.label-danger.pull-left
-        = v['lang'].capitalize
-      %a.label.label-danger.pull-right{href: "/snippets/#{k}"}
-        = k
+      %div.snippet-desc
+        %h3
+          %span.label.label-danger
+            = v['lang'].capitalize
+        %button.btn.btn-danger.btn-raised.copy-codemirror{target: "#gist-#{i}"}
+          %i.material-icons
+            content_copy
     :javascript
       this.viewer($("#gist-#{i}")[0], "#{v['lang']}");
-  %a.btn.btn-raised.btn-success.pull-right{href: '/gists/new'} New paste
