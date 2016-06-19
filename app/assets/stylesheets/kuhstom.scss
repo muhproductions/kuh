@@ -5,28 +5,30 @@ textarea {
   height: 200px;
 }
 
-.content {
-  &:before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    display: block;
-    background-image: url(asset-path("background.jpg"));
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: contain;
-    width: 100%;
-    -webkit-filter: blur(1px);
-    -moz-filter: blur(1px);
-    -o-filter: blur(1px);
-    -ms-filter: blur(1px);
-    filter: blur(1px);
+@media only screen and (min-width: 760px) {
+  .content {
+    &:before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      display: block;
+      background-image: url(asset-path("background.jpg"));
+      background-repeat: no-repeat;
+      background-position: bottom;
+      background-size: contain;
+      width: 100%;
+      -webkit-filter: blur(1px);
+      -moz-filter: blur(1px);
+      -o-filter: blur(1px);
+      -ms-filter: blur(1px);
+      filter: blur(1px);
+    }
+  
+    overflow: auto;
+    position: relative;
   }
-
-  overflow: auto;
-  position: relative;
 }
