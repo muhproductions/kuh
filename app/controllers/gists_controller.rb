@@ -3,7 +3,7 @@ class GistsController < ApplicationController
   before_action :get_gist, only: [:show, :delete]
 
   def new
-    @languages = CODEMIRROR[:modes]
+    @languages = ['nope'] + CODEMIRROR[:modes]
   end
   def show; end
 
