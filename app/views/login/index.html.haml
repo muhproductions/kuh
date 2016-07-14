@@ -1,0 +1,14 @@
+.container
+  .jumbotron
+    = form_tag do
+      .form-group.label-floating
+        = label_tag(:username, 'Username', class: 'control-label')
+        = text_field_tag(:username, nil, class: 'form-control')
+        %p.help-block Maybe the only chance to choose something cool
+      .form-group.label-floating
+        = label_tag(:password, 'Password', class: 'control-label')
+        = password_field_tag(:password, nil, class: 'form-control')
+        %p.help-block
+          The password is displayed and transferred in plain text. (of course not)
+      %button.btn.btn-primary.btn-raised{name: :register} Register
+      %button.btn.btn-primary.btn-raised{name: :login} Login

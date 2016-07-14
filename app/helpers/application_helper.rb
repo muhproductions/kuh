@@ -4,4 +4,8 @@ module ApplicationHelper
     'active' if current_page?(path)
   end
 
+  def logged_in?
+    !!session[:user_id]
+  end
+
 end
