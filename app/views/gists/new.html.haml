@@ -1,4 +1,10 @@
 %div.container
+  %div.alert.alert-warning#js_alert
+    %h2 Don't like javascript? That's totally fine.
+    %p
+      We try to use as less javascript as possible to provide this paste service.
+      That means you can use kuh without javascript at all.
+      It might look really shitty in some cases but that's your problem ;)
   %div.jumbotron
     %h2 Short on Vim knowledge?
     %p
@@ -28,5 +34,6 @@
   function init_editor() {
     editor($('#gist-0')[0]);
     $('#add_snipp').removeClass('hide')
+    $('#js_alert').addClass('hide')
   }
   init_editor();
