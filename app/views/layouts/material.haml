@@ -34,7 +34,10 @@
                 %a{href: 'https://github.com/muhproductions'} GitHub
             %ul.nav.navbar-nav.navbar-right
               %li
-                %a{href: '/login'} Login
+                - if logged_in?
+                  %a{href: '/logout'}= "Not #{session[:user_name]}? Logout"
+                - else
+                  %a{href: '/login'} Login
 
       - if flash[:success]
         :javascript
