@@ -31,7 +31,8 @@
               %li{class: cp('/about')}
                 %a{href: '/about'} About the Project
               %li
-                %a{href: 'https://github.com/muhproductions'} GitHub
+                %a{href: 'https://github.com/muhproductions'}
+                  = image_tag 'mark.png', height: 18
             %ul.nav.navbar-nav.navbar-right
               %li
                 - if logged_in?
