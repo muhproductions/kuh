@@ -43,6 +43,9 @@
       - if flash[:success]
         :javascript
           toastr.success('#{flash[:success]}');
+      - if flash[:error]
+        :javascript
+          toastr.error('#{flash[:error]}');
       - if flash[:created]
         :javascript
           toastr.success(
